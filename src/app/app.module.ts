@@ -22,7 +22,7 @@ import { HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
     AppRoutingModule,
     BrowserAnimationsModule,
     LayoutModule,
-
+    
   ],
   providers: [
     AuthGuard,
