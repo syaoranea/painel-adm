@@ -11,6 +11,7 @@
           <div class="auth-form-wrapper px-4 py-5">
             <a routerLink="." class="nobleui-logo d-block mb-2">Cosplay<span>Fans</span></a>
             <h5 class="text-muted fw-normal mb-4">Bem vindo de volta! Faça login na sua conta.</h5>
+            <p *ngIf="error" class="error">E-mail ou senha incorreto</p>
             <form class="forms-sample" [formGroup]="loginForm">
               <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">E-mail</label>

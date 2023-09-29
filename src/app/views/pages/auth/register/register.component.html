@@ -11,18 +11,18 @@
           <div class="auth-form-wrapper px-4 py-5">
             <a routerLink="." class="nobleui-logo d-block mb-2">Cosplay<span>Fans</span></a>
             <h5 class="text-muted fw-normal mb-4">Create a free account.</h5>
-            <form class="forms-sample">
+            <form class="forms-sample" [formGroup]="registerForm">
               <div class="mb-3">
                 <label for="exampleInputUsername1" class="form-label">Username</label>
-                <input type="text" class="form-control" id="exampleInputUsername1" autocomplete="Username" placeholder="Username">
+                <input type="text" class="form-control" id="exampleInputUsername1" formControlName="name" autocomplete="Username" placeholder="Username">
               </div>
               <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Email address</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+                <input type="email" class="form-control" id="exampleInputEmail1" formControlName="email" placeholder="Email">
               </div>
               <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label">Password</label>
-                <input type="password" class="form-control" id="exampleInputPassword1" autocomplete="current-password" placeholder="Password">
+                <input type="password" class="form-control" id="exampleInputPassword1" formControlName="password" autocomplete="current-password" placeholder="Password">
               </div>
               <div class="form-check mb-3">
                 <input type="checkbox" class="form-check-input" id="authCheck">
