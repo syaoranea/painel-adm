@@ -1,18 +1,19 @@
 import { CookieService } from 'ngx-cookie-service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { UsuarioService } from 'src/app/services/users/usuario.service';
 
 import { AuthRequest } from 'src/app/models/interface/authRequest';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
 
   returnUrl: any;
   loginform: FormGroup;
@@ -22,6 +23,7 @@ export class LoginComponent implements OnInit {
   });
 
   error = false;
+  private destroy$ = new Subject<void>();
 
   constructor(
     private router: Router,
@@ -48,6 +50,7 @@ export class LoginComponent implements OnInit {
   onLogin() {
     if (this.loginForm.value && this.loginForm.valid) {
       this.usuarioService.authUser(this.loginForm.value as AuthRequest)
+      .pipe(takeUntil(this.destroy$))
       .subscribe({
         next: (response) => {
           if (response) {
@@ -63,6 +66,11 @@ export class LoginComponent implements OnInit {
         }
       });
     }
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 
 }

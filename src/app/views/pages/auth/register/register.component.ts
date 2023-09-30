@@ -1,21 +1,23 @@
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UsuarioService } from 'src/app/services/users/usuario.service';
 import { SignupUserRequest } from 'src/app/models/interface/signupUserRequest';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss']
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent implements OnInit, OnDestroy {
 
   registerForm: FormGroup = this.FormBuilder.group({
     name: ['', Validators.required],
     email: ['', Validators.required],
     password: ['', Validators.required]
   });
+  private destroy$ = new Subject<void>();
 
   constructor(
     private router: Router,
@@ -38,6 +40,9 @@ export class RegisterComponent implements OnInit {
   onSignup() {
    if (this.registerForm.valid && this.registerForm.value) {
      this.usuarioService.signUp(this.registerForm.value as SignupUserRequest)
+     .pipe(
+        takeUntil(this.destroy$)
+     )
      .subscribe({
         next: (response) => {
           if (response) {
@@ -52,6 +57,10 @@ export class RegisterComponent implements OnInit {
      }
    }
 
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
 
 
 }

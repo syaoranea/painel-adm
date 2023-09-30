@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { SignupUserRequest } from 'src/app/models/interface/signupUserRequest';
+import { UsuarioService } from 'src/app/services/users/usuario.service';
 
 @Component({
   selector: 'app-usuarios',
@@ -8,10 +10,14 @@ import { Component, OnInit } from '@angular/core';
 export class UsuariosComponent implements OnInit {
 
   public isAsideNavCollapsed = true;
+  constructor(
 
-  constructor() { }
+  ) { }
 
   ngOnInit(): void {
+
   }
+
+
 
 }

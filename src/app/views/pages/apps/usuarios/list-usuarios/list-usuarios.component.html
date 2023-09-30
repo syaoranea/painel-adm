@@ -1,4 +1,3 @@
-      
 <div class="section-body">
     <div class="container-fluid">
         <div class="d-flex justify-content-between align-items-center ">
@@ -20,28 +19,29 @@
 
 <div class="card-body">
     <div class="table-responsive">
-    <table id="dataTableExample" class="table">
+    <table id="dataTableExample" class="table" >
         <thead>
         <tr>
             <th>Nome</th>
             <th>E-mail</th>
             <th>Senha</th>
             <th>Opçoes</th>
-            
+
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <td>Tiger Nixon</td>
-            <td>System Architect</td>
-            <td>Edinburgh</td>
+        <tr *ngFor="let item of usersList">
+          <td>a</td>
+            <td>{{ item.name }}</td>
+            <td>{{ item.description }}</td>
+            <td>{{ item.price }}</td>
             <td>
                 <button class="btn-opcao" type="button"><i class="feather icon-edit"></i></button>
                 <button class="btn-opcao" type="button"><i class="feather icon-x-square"></i></button>
             </td>
-            
+
         </tr>
-        <tr>
+       <!--  <tr>
             <td>Garrett Winters</td>
             <td>Accountant</td>
             <td>Tokyo</td>
@@ -229,7 +229,7 @@
                 <button class="btn-opcao" type="button"><i class="feather icon-edit"></i></button>
                 <button class="btn-opcao" type="button"><i class="feather icon-x-square"></i></button>
             </td>
-        </tr>
+        </tr> -->
         </tbody>
         <tfoot>
         <tr>
