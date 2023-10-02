@@ -7,6 +7,7 @@ import { AuthRequest } from 'src/app/models/interface/authRequest';
 import { AuthResponse } from 'src/app/models/interface/authResponse';
 import { SignupUserRequest } from 'src/app/models/interface/signupUserRequest';
 import { environment } from 'src/environments/environment';
+import { Product } from 'src/app/models/interface/product';
 
 @Injectable({
   providedIn: 'root'
@@ -22,11 +23,13 @@ export class UsuarioService {
     }),
   };
   private userDataEmitter$ =
-  new BehaviorSubject<Array<SignupUserResponse> | null>(null);
-  userData: Array<SignupUserResponse> = [];
+  new BehaviorSubject<Array<Product> | null>(null);
+  userData: Array<Product> = [];
 
-constructor(private http: HttpClient,
-  private cookieService: CookieService) { }
+constructor(
+  private http: HttpClient,
+  private cookieService: CookieService
+  ) { }
 
 signUp(request: SignupUserRequest): Observable<SignupUserResponse> {
   return this.http.post<SignupUserResponse>(
@@ -54,7 +57,7 @@ signUp(request: SignupUserRequest): Observable<SignupUserResponse> {
     );
   }
 
-  setUserDatas(data: Array<SignupUserResponse>): void {
+  setUserDatas(data: Array<Product>): void {
     if (data) {
       this.userDataEmitter$.next(data);
       this.getUsersDatas();
@@ -72,5 +75,24 @@ signUp(request: SignupUserRequest): Observable<SignupUserResponse> {
     return this.userData;
   }
 
+  editUser(requestData: Product): Observable<void> {
+    return this.http.put<void>(
+      `${this.apiurl}/product/edit`,
+      requestData,
+      this.httpOptions
+    );
+  }
+
+  deleteUser(id: string): Observable<Product> {
+    return this.http.delete<Product>(
+      `${this.apiurl}/product/delete`,
+      {
+      ...this.httpOptions,
+      params: {
+        product_id: id,
+      }
+    }
+    );
+  }
 
 }

@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { SignupUserRequest } from 'src/app/models/interface/signupUserRequest';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subject, takeUntil } from 'rxjs';
 import { UsuarioService } from 'src/app/services/users/usuario.service';
 
 @Component({
@@ -7,17 +7,39 @@ import { UsuarioService } from 'src/app/services/users/usuario.service';
   templateUrl: './usuarios.component.html',
   styleUrls: ['./usuarios.component.scss']
 })
-export class UsuariosComponent implements OnInit {
+export class UsuariosComponent implements OnInit, OnDestroy {
 
+  usersList: any[] = [];
+  private destroy$ = new Subject<void>();
   public isAsideNavCollapsed = true;
-  constructor(
 
+  constructor(
+    private usuarioService: UsuarioService,
   ) { }
 
   ngOnInit(): void {
-
+    this.getUsers();
   }
 
+  getUsers(): void {
+    this.usuarioService.getAllUsers()
+    .pipe(
+      takeUntil(this.destroy$)
+    )
+    .subscribe({
+      next: (response) => {
+        this.usersList = response;
+        this.usuarioService.setUserDatas(this.usersList);
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    });
+  }
 
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
 
 }

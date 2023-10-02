@@ -1,4 +1,4 @@
-      
+
 <div class="section-body">
     <div class="container-fluid">
         <div class="d-flex justify-content-between align-items-center ">
@@ -11,34 +11,59 @@
                 </ol>
             </div>
             <div class="">
-                <a class="btn btn-outline-primary" routerLink="/apps/usuarios/listar">Listar</a>
+                <a class="btn btn-outline-primary" (click)="onList()">Listar</a>
                 <a class="btn btn-outline-primary" type="button">Perfil</a>
             </div>
         </div>
     </div>
 </div>
-<div class="row">
-    
+<div class="row" *ngIf="loading">
+
       <div class="card">
-        <div class="card-body">  
-          <form class="forms-sample">
+        <div class="card-body">
+          <form class="forms-sample" [formGroup]="formUser" *ngIf="!id">
             <div class="mb-3">
               <label for="exampleInputUsername1" class="form-label">Nome</label>
-              <input type="text" class="form-control" id="exampleInputUsername1" autocomplete="off" placeholder="Nome">
+              <input type="text" class="form-control" id="exampleInputUsername1" formControlName="name" autocomplete="off" placeholder="Nome">
             </div>
             <div class="mb-3">
               <label for="exampleInputEmail1" class="form-label">E-mail</label>
-              <input type="email" class="form-control" id="exampleInputEmail1" placeholder="E-mail">
+              <input type="email" class="form-control" id="exampleInputEmail1" formControlName="email" placeholder="E-mail">
             </div>
             <div class="mb-3">
               <label for="exampleInputPassword1" class="form-label">Senha</label>
-              <input type="password" class="form-control" id="exampleInputPassword1" autocomplete="off" placeholder="Senha">
+              <input type="password" class="form-control" id="exampleInputPassword1" formControlName="password" autocomplete="off" placeholder="Senha">
+            </div>
+            <button type="submit" class="btn btn-primary me-2" (click)="onSubmit()">Enviar</button>
+            <button class="btn btn-secondary">Cancelar</button>
+          </form>
+
+          <form class="forms-sample" [formGroup]="formEditUser" *ngIf="id" (ngSubmit)="onSubmitEdit()">
+            <div class="mb-3">
+              <label for="exampleInputUsername1" class="form-label">Nome</label>
+              <input type="text" class="form-control" id="exampleInputUsername1" formControlName="name"  placeholder="Nome">
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Preço</label>
+              <input type="email" class="form-control" id="exampleInputEmail1" formControlName="price" placeholder="E-mail">
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Descriçao</label>
+              <input type="text" class="form-control" id="exampleInputPassword1" formControlName="description"  placeholder="Senha">
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Descriçao</label>
+              <input type="text" class="form-control" id="exampleInputPassword1" formControlName="product_id"  placeholder="Senha">
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Quantidade</label>
+              <input type="text" class="form-control" id="exampleInputPassword1" formControlName="amount" placeholder="Senha">
             </div>
             <button type="submit" class="btn btn-primary me-2">Enviar</button>
             <button class="btn btn-secondary">Cancelar</button>
           </form>
-  
+
         </div>
       </div>
-    
+
   </div>

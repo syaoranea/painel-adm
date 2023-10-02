@@ -19,7 +19,7 @@
 
 <div class="card-body">
     <div class="table-responsive">
-    <table id="dataTableExample" class="table" >
+    <table id="dataTableExample" class="table" *ngIf="usersList">
         <thead>
         <tr>
             <th>Nome</th>
@@ -30,14 +30,16 @@
         </tr>
         </thead>
         <tbody>
+          <tbody>
+
         <tr *ngFor="let item of usersList">
-          <td>a</td>
+          <td>{{ item.id }}</td>
             <td>{{ item.name }}</td>
             <td>{{ item.description }}</td>
-            <td>{{ item.price }}</td>
+            <td >{{ item.price }}</td>
             <td>
-                <button class="btn-opcao" type="button"><i class="feather icon-edit"></i></button>
-                <button class="btn-opcao" type="button"><i class="feather icon-x-square"></i></button>
+                <button class="btn-opcao" type="button" (click)="onEdit(item.id)"><i class="feather icon-edit"></i></button>
+                <button class="btn-opcao" type="button" (click)="onDelete(item.id)"><i class="feather icon-x-square"></i></button>
             </td>
 
         </tr>
