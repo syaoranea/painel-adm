@@ -14,11 +14,13 @@ import { ErrorPageComponent } from './views/pages/error-page/error-page.componen
 import { HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
 import { UsuarioService } from './services/users/usuario.service';
 import { HttpClientModule } from '@angular/common/http';
+import { CaracteresPipe } from './views/pages/apps/fotos/pipe/caracteres.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     ErrorPageComponent,
+    CaracteresPipe,
   ],
   imports: [
     BrowserModule,

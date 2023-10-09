@@ -1,0 +1,253 @@
+<div class="section-body">
+    <div class="container-fluid">
+        <div class="d-flex justify-content-between align-items-center ">
+            <div class="header-action">
+                <h1 class="page-title">Imagens</h1>
+                <ol class="breadcrumb page-breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">Dasboard</a></li>
+                    <li class="breadcrumb-item" aria-current="page">Fotos</li>
+                    <li class="breadcrumb-item active" aria-current="page">Listar</li>
+                </ol>
+            </div>
+            <div class="">
+                <a class="btn btn-outline-primary" routerLink="/apps/fotos/criar-img">Add</a>
+                <a class="btn btn-outline-primary">Perfil</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card-body">
+    <div class="table-responsive">
+    <table id="dataTableExample" class="table" *ngIf="usersList">
+        <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Descrição</th>
+            <th>Url da Imagem</th>
+            <th>Url da Thumb</th>
+            <th>Data de Criação</th>
+            <th>Usuario</th>
+            <th>Opçoes</th>
+
+        </tr>
+        </thead>
+        <tbody>
+          <tbody>
+
+        <tr *ngFor="let item of usersList">
+            <td>{{ item.nome | caracteres:30  }}</td>
+            <td>{{ item.description | caracteres:30 }}</td>
+            <td >{{ item.imageurl | caracteres:30 }}</td>
+            <td>{{ item.thumbnailurl | caracteres:30 }}</td>
+            <td >{{ item.datacriacao | caracteres:30 }}</td>
+            <td>{{ item.users | caracteres:30 }}</td>
+            <td>
+                <button class="btn-opcao" type="button" (click)="onEdit(item.id)"><i class="feather icon-edit"></i></button>
+                <button class="btn-opcao" type="button" (click)="onDelete(item.id)"><i class="feather icon-x-square"></i></button>
+            </td>
+
+        </tr>
+       <!--  <tr>
+            <td>Garrett Winters</td>
+            <td>Accountant</td>
+            <td>Tokyo</td>
+            <td>
+                <button class="btn-opcao" type="button"><i class="feather icon-edit"></i></button>
+                <button class="btn-opcao" type="button"><i class="feather icon-x-square"></i></button>
+            </td>
+        </tr>
+        <tr>
+            <td>Ashton Cox</td>
+            <td>Junior Technical Author</td>
+            <td>San Francisco</td>
+            <td>
+                <button class="btn-opcao" type="button"><i class="feather icon-edit"></i></button>
+                <button class="btn-opcao" type="button"><i class="feather icon-x-square"></i></button>
+            </td>
+        </tr>
+        <tr>
+            <td>Cedric Kelly</td>
+            <td>Senior Javascript Developer</td>
+            <td>Edinburgh</td>
+            <td>
+                <button class="btn-opcao" type="button"><i class="feather icon-edit"></i></button>
+                <button class="btn-opcao" type="button"><i class="feather icon-x-square"></i></button>
+            </td>
+        </tr>
+        <tr>
+            <td>Airi Satou</td>
+            <td>Accountant</td>
+            <td>Tokyo</td>
+            <td>
+                <button class="btn-opcao" type="button"><i class="feather icon-edit"></i></button>
+                <button class="btn-opcao" type="button"><i class="feather icon-x-square"></i></button>
+            </td>
+        </tr>
+        <tr>
+            <td>Brielle Williamson</td>
+            <td>Integration Specialist</td>
+            <td>New York</td>
+            <td>
+                <button class="btn-opcao" type="button"><i class="feather icon-edit"></i></button>
+                <button class="btn-opcao" type="button"><i class="feather icon-x-square"></i></button>
+            </td>
+        </tr>
+        <tr>
+            <td>Herrod Chandler</td>
+            <td>Sales Assistant</td>
+            <td>San Francisco</td>
+            <td>
+                <button class="btn-opcao" type="button"><i class="feather icon-edit"></i></button>
+                <button class="btn-opcao" type="button"><i class="feather icon-x-square"></i></button>
+            </td>
+        </tr>
+        <tr>
+            <td>Rhona Davidson</td>
+            <td>Integration Specialist</td>
+            <td>Tokyo</td>
+            <td>
+                <button class="btn-opcao" type="button"><i class="feather icon-edit"></i></button>
+                <button class="btn-opcao" type="button"><i class="feather icon-x-square"></i></button>
+            </td>
+        </tr>
+        <tr>
+            <td>Colleen Hurst</td>
+            <td>Javascript Developer</td>
+            <td>San Francisco</td>
+            <td>
+                <button class="btn-opcao" type="button"><i class="feather icon-edit"></i></button>
+                <button class="btn-opcao" type="button"><i class="feather icon-x-square"></i></button>
+            </td>
+        </tr>
+        <tr>
+            <td>Sonya Frost</td>
+            <td>Software Engineer</td>
+            <td>Edinburgh</td>
+            <td>
+                <button class="btn-opcao" type="button"><i class="feather icon-edit"></i></button>
+                <button class="btn-opcao" type="button"><i class="feather icon-x-square"></i></button>
+            </td>
+        </tr>
+        <tr>
+            <td>Jena Gaines</td>
+            <td>Office Manager</td>
+            <td>London</td>
+            <td>
+                <button class="btn-opcao" type="button"><i class="feather icon-edit"></i></button>
+                <button class="btn-opcao" type="button"><i class="feather icon-x-square"></i></button>
+            </td>
+        </tr>
+        <tr>
+            <td>Quinn Flynn</td>
+            <td>Support Lead</td>
+            <td>Edinburgh</td>
+            <td>
+                <button class="btn-opcao" type="button"><i class="feather icon-edit"></i></button>
+                <button class="btn-opcao" type="button"><i class="feather icon-x-square"></i></button>
+            </td>
+        </tr>
+        <tr>
+            <td>Charde Marshall</td>
+            <td>Regional Director</td>
+            <td>San Francisco</td>
+            <td>
+                <button class="btn-opcao" type="button"><i class="feather icon-edit"></i></button>
+                <button class="btn-opcao" type="button"><i class="feather icon-x-square"></i></button>
+            </td>
+        </tr>
+        <tr>
+            <td>Haley Kennedy</td>
+            <td>Senior Marketing Designer</td>
+            <td>London</td>
+            <td>
+                <button class="btn-opcao" type="button"><i class="feather icon-edit"></i></button>
+                <button class="btn-opcao" type="button"><i class="feather icon-x-square"></i></button>
+            </td>
+        </tr>
+        <tr>
+        <td>Tatyana Fitzpatrick</td>
+            <td>Regional Director</td>
+            <td>London</td>
+            <td>
+                <button class="btn-opcao" type="button"><i class="feather icon-edit"></i></button>
+                <button class="btn-opcao" type="button"><i class="feather icon-x-square"></i></button>
+            </td>
+        </tr>
+        <tr>
+            <td>Michael Silva</td>
+            <td>Marketing Designer</td>
+            <td>London</td>
+            <td>
+                <button class="btn-opcao" type="button"><i class="feather icon-edit"></i></button>
+                <button class="btn-opcao" type="button"><i class="feather icon-x-square"></i></button>
+            </td>
+        </tr>
+        <tr>
+            <td>Paul Byrd</td>
+            <td>Chief Financial Officer (CFO)</td>
+            <td>New York</td>
+            <td>
+                <button class="btn-opcao" type="button"><i class="feather icon-edit"></i></button>
+                <button class="btn-opcao" type="button"><i class="feather icon-x-square"></i></button>
+            </td>
+        </tr>
+        <tr>
+            <td>Gloria Little</td>
+            <td>Systems Administrator</td>
+            <td>New York</td>
+            <td>
+                <button class="btn-opcao" type="button"><i class="feather icon-edit"></i></button>
+                <button class="btn-opcao" type="button"><i class="feather icon-x-square"></i></button>
+            </td>
+        </tr>
+        <tr>
+            <td>Bradley Greer</td>
+            <td>Software Engineer</td>
+            <td>London</td>
+            <td>
+                <button class="btn-opcao" type="button"><i class="feather icon-edit"></i></button>
+                <button class="btn-opcao" type="button"><i class="feather icon-x-square"></i></button>
+            </td>
+        </tr>
+        <tr>
+            <td>Dai Rios</td>
+            <td>Personnel Lead</td>
+            <td>Edinburgh</td>
+            <td>
+                <button class="btn-opcao" type="button"><i class="feather icon-edit"></i></button>
+                <button class="btn-opcao" type="button"><i class="feather icon-x-square"></i></button>
+            </td>
+        </tr>
+        <tr>
+            <td>Jenette Caldwell</td>
+            <td>Development Lead</td>
+            <td>New York</td>
+            <td>
+                <button class="btn-opcao" type="button"><i class="feather icon-edit"></i></button>
+                <button class="btn-opcao" type="button"><i class="feather icon-x-square"></i></button>
+            </td>
+        </tr>
+        <tr>
+            <td>Yuri Berry</td>
+            <td>Chief Marketing Officer (CMO)</td>
+            <td>New York</td>
+            <td>
+                <button class="btn-opcao" type="button"><i class="feather icon-edit"></i></button>
+                <button class="btn-opcao" type="button"><i class="feather icon-x-square"></i></button>
+            </td>
+        </tr> -->
+        </tbody>
+        <tfoot>
+        <tr>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+        </tfoot>
+    </table>
+    </div>
+</div>

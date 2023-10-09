@@ -38,15 +38,11 @@ export const MENU: MenuItem[] = [
     subItems: [
       {
         label: 'Listar Fotos',
-        link: '/apps/fotos/listar',
+        link: '/apps/fotos/listar-img',
       },
       {
         label: 'Adicionar Fotos',
-        link: '/apps/fotos/adicionar'
-      },
-      {
-        label: 'Compose',
-        link: '/apps/fotos/compose'
+        link: '/apps/fotos/criar-img'
       },
     ]
   },

@@ -1,0 +1,85 @@
+
+<div class="section-body">
+    <div class="container-fluid">
+        <div class="d-flex justify-content-between align-items-center ">
+            <div class="header-action">
+                <h1 class="page-title">Cadastrar Imagem</h1>
+                <ol class="breadcrumb page-breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">Dasboard</a></li>
+                    <li class="breadcrumb-item" aria-current="page">Fotos</li>
+                    <li class="breadcrumb-item active" aria-current="page">Adicionar</li>
+                </ol>
+            </div>
+            <div class="">
+                <a class="btn btn-outline-primary" (click)="onList()">Listar</a>
+                <a class="btn btn-outline-primary" type="button">Perfil</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row" *ngIf="loading">
+
+      <div class="card">
+        <div class="card-body">
+          <form class="forms-sample" [formGroup]="formFotos" *ngIf="!id">
+            <div class="mb-3">
+              <label for="exampleInputUsername1" class="form-label">Nome</label>
+              <input type="text" class="form-control" id="exampleInputUsername1" formControlName="nome" autocomplete="off" placeholder="Nome">
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Descrição</label>
+              <input type="text" class="form-control" id="exampleInputEmail1" formControlName="description" placeholder="E-mail">
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Url Imagem</label>
+              <input type="text" class="form-control" id="exampleInputPassword1" formControlName="imageurl" autocomplete="off" placeholder="Senha">
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Url Thumbnail</label>
+              <input type="text" class="form-control" id="exampleInputPassword1" formControlName="thumbnailurl" autocomplete="off" placeholder="Senha">
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Data Criacao</label>
+              <input type="text" class="form-control" id="exampleInputPassword1" formControlName="datacriacao" autocomplete="off" placeholder="Senha">
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">usuario</label>
+              <input type="text" class="form-control" id="exampleInputPassword1" formControlName="users" autocomplete="off" placeholder="Senha">
+            </div>
+            <button type="submit" class="btn btn-primary me-2" (click)="onSubmit()">Enviar</button>
+            <button class="btn btn-secondary">Cancelar</button>
+          </form>
+
+          <form class="forms-sample" [formGroup]="formEditFoto" *ngIf="id" (ngSubmit)="onSubmitEdit()">
+            <div class="mb-3">
+              <label for="exampleInputUsername1" class="form-label">Nome</label>
+              <input type="text" class="form-control" id="exampleInputUsername1" formControlName="nome">
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Descrição</label>
+              <input type="text" class="form-control" id="exampleInputEmail1" formControlName="description">
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Url Imagem</label>
+              <input type="text" class="form-control" id="exampleInputPassword1" formControlName="imageurl" >
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Url Thumbnail</label>
+              <input type="text" class="form-control" id="exampleInputPassword1" formControlName="thumbnailurl">
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Data Criacao</label>
+              <input type="text" class="form-control" id="exampleInputPassword1" formControlName="datacriacao" >
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">usuario</label>
+              <input type="text" class="form-control" id="exampleInputPassword1" formControlName="users">
+            </div>
+            <button type="submit" class="btn btn-primary me-2">Enviar</button>
+            <button class="btn btn-secondary">Cancelar</button>
+          </form>
+
+        </div>
+      </div>
+
+  </div>

@@ -1,3 +1,4 @@
+import { FotosComponent } from './fotos/fotos.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
@@ -42,6 +43,9 @@ import { CreateUsuariosComponent } from './usuarios/create-usuarios/create-usuar
 import { PerfilUsuariosComponent } from './usuarios/perfil-usuarios/perfil-usuarios.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ListFotosComponent } from './fotos/list-fotos/list-fotos.component';
+import { CreateFotosComponent } from './fotos/create-fotos/create-fotos.component';
+import { CaracteresPipe } from 'src/app/views/pages/apps/fotos/pipe/caracteres.pipe';
 
 const routes: Routes = [
   {
@@ -69,6 +73,29 @@ const routes: Routes = [
           {
             path: 'criar',
             component: CreateUsuariosComponent
+          },
+          {
+            path: 'perfil',
+            component: PerfilUsuariosComponent
+          }
+        ]
+      },
+      {
+        path: 'fotos',
+        component: FotosComponent,
+        children: [
+          {
+            path: '',
+            redirectTo: 'listar-img',
+            pathMatch: 'full'
+          },
+          {
+            path: 'listar-img',
+            component: ListFotosComponent
+          },
+          {
+            path: 'criar-img',
+            component: CreateFotosComponent
           },
           {
             path: 'perfil',
@@ -112,7 +139,7 @@ const routes: Routes = [
 ]
 
 @NgModule({
-  declarations: [EmailComponent, UsuariosComponent, ChatComponent, CalendarComponent, AppsComponent, InboxComponent, ReadComponent, ComposeComponent, ListUsuariosComponent, CreateUsuariosComponent, PerfilUsuariosComponent],
+  declarations: [EmailComponent, CaracteresPipe, UsuariosComponent, ChatComponent, FotosComponent, CalendarComponent, AppsComponent, InboxComponent, ReadComponent, ComposeComponent, ListUsuariosComponent, CreateUsuariosComponent, PerfilUsuariosComponent, ListFotosComponent, CreateFotosComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
@@ -125,6 +152,7 @@ const routes: Routes = [
     NgbTooltipModule,
     NgbNavModule,
     NgbCollapseModule,
+
     NgSelectModule,
     QuillModule.forRoot(), // ngx-quill
   ],
